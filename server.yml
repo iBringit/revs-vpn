@@ -7,39 +7,6 @@
     - config.cfg
   tasks:
     - block:
-      - name: Wait until the cloud-init completed
-        wait_for:
-          path: /var/lib/cloud/data/result.json
-          delay: 10
-          timeout: 600
-          state: present
-        become: false
-        when: cloudinit
-
-      - block:
-        - name: Ensure the config directory exists
-          file:
-            dest: "configs/{{ IP_subject_alt_name }}"
-            state: directory
-            mode: "0700"
-
-        - name: Dump the ssh config
-          copy:
-            dest: "configs/{{ IP_subject_alt_name }}/ssh_config"
-            mode: "0600"
-            content: |
-              Host {{ IP_subject_alt_name }} {{ algo_server_name }}
-                HostName {{ IP_subject_alt_name }}
-                User {{ ansible_ssh_user }}
-                Port {{ ansible_ssh_port }}
-                IdentityFile {{ SSH_keys.private | realpath }}
-                KeepAlive yes
-                ServerAliveInterval 30
-        when: inventory_hostname != 'localhost'
-        become: false
-        delegate_to: localhost
-
-
       - import_role:
           name: common
         tags: common
