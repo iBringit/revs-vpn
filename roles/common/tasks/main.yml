@@ -11,6 +11,12 @@
   tags:
     - update-users
 
+#Added Centos tasks
+- include_tasks: centos.yml
+  when: '"Centos" in OS.stdout or "Linux" in OS.stdout'
+  tags:
+    - update-users    
+
 - include_tasks: freebsd.yml
   when: '"FreeBSD" in OS.stdout'
   tags:
