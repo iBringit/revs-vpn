@@ -15,16 +15,12 @@
       - { name: DigitalOcean, alias: digitalocean }
       - { name: Amazon Lightsail, alias: lightsail }
       - { name: Amazon EC2, alias: ec2 }
+      - { name: Vultr, alias: vultr }
       - { name: Microsoft Azure, alias: azure }
       - { name: Google Compute Engine, alias: gce }
-      - { name: Hetzner Cloud, alias: hetzner }
-      - { name: Vultr, alias: vultr }
       - { name: Scaleway, alias: scaleway}
       - { name: OpenStack (DreamCompute optimised), alias: openstack }
-      - { name: CloudStack (Exoscale optimised), alias: cloudstack }
-      - { name: Linode, alias: linode }
       - { name: Install to existing Ubuntu 18.04 or 19.04 server (Advanced), alias: local }
-      - { name: Install to CentOS, alias: centos }
   vars_files:
     - config.cfg
 
