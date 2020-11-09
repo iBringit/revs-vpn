@@ -12,7 +12,8 @@
     - name: Verify Ansible meets Algo VPN requirements.
       assert:
         that:
-          - ansible_version.full is version('2.7.10', '==')
+          #- ansible_version.full is version('2.7.10', '==')
+          - ansible_version.full is version('2.10', '==')
           - not ipaddr.failed
         msg: >
           You must update the requirements to use this version of Algo.
